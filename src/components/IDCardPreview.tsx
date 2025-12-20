@@ -37,35 +37,52 @@ const IDCardPreview = forwardRef<HTMLDivElement, IDCardPreviewProps>(
             className="text-lg font-bold tracking-wide"
             style={{ color: "#1e3a5f" }}
           >
-            {data.name || "EMPLOYEE NAME"}
+            {data.name || ""}
           </span>
         </div>
 
         {/* Photo Area */}
-        <div className="absolute top-[124px] left-1/2 -translate-x-1/2 w-[120px] h-[150px] overflow-hidden bg-muted">
-          {data.photo ? (
+        <div className="absolute top-[124px] left-1/2 -translate-x-1/2 w-[120px] h-[150px] overflow-hidden">
+          {data.photo && (
             <img
               src={data.photo}
               alt="Employee Photo"
               className="w-full h-full object-cover"
               crossOrigin="anonymous"
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
-              Photo
-            </div>
           )}
         </div>
 
-        {/* Employee Details */}
-        <div className="absolute top-[355px] left-[135px] right-[20px] space-y-[8px] text-sm font-medium" style={{ color: "#1e3a5f" }}>
-          <div>{data.empId || "—"}</div>
-          <div>{data.dob || "—"}</div>
-          <div>{data.bloodGroup || "—"}</div>
-          <div>{data.emergencyContact || "—"}</div>
-          <div className="text-xs leading-tight max-w-[200px]">
-            {data.idMarks || "—"}
-          </div>
+        {/* Employee Details - aligned to template fields */}
+        <div 
+          className="absolute text-[13px] font-semibold"
+          style={{ color: "#1e3a5f", top: "356px", left: "148px" }}
+        >
+          {data.empId || ""}
+        </div>
+        <div 
+          className="absolute text-[13px] font-semibold"
+          style={{ color: "#1e3a5f", top: "388px", left: "148px" }}
+        >
+          {data.dob || ""}
+        </div>
+        <div 
+          className="absolute text-[13px] font-semibold"
+          style={{ color: "#1e3a5f", top: "420px", left: "148px" }}
+        >
+          {data.bloodGroup || ""}
+        </div>
+        <div 
+          className="absolute text-[13px] font-semibold"
+          style={{ color: "#1e3a5f", top: "452px", left: "148px" }}
+        >
+          {data.emergencyContact || ""}
+        </div>
+        <div 
+          className="absolute text-[13px] font-semibold leading-tight"
+          style={{ color: "#1e3a5f", top: "484px", left: "148px", maxWidth: "200px" }}
+        >
+          {data.idMarks || ""}
         </div>
       </div>
     );
