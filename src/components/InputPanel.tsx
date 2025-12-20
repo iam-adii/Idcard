@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Upload, X } from "lucide-react";
 
 interface EmployeeData {
-  name: string;
   empId: string;
   dob: string;
   bloodGroup: string;
@@ -47,16 +46,6 @@ const InputPanel = ({ data, onChange }: InputPanelProps) => {
 
   return (
     <div className="space-y-5">
-      <div className="space-y-2">
-        <Label htmlFor="name">Employee Name</Label>
-        <Input
-          id="name"
-          placeholder="Enter full name"
-          value={data.name}
-          onChange={(e) => handleChange("name", e.target.value)}
-        />
-      </div>
-
       <div className="space-y-2">
         <Label htmlFor="empId">Employee ID</Label>
         <Input

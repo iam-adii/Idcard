@@ -7,7 +7,6 @@ import ExportPanel from "@/components/ExportPanel";
 import { CreditCard } from "lucide-react";
 
 interface EmployeeData {
-  name: string;
   empId: string;
   dob: string;
   bloodGroup: string;
@@ -17,7 +16,6 @@ interface EmployeeData {
 }
 
 const initialData: EmployeeData = {
-  name: "",
   empId: "",
   dob: "",
   bloodGroup: "",
@@ -65,7 +63,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <ExportPanel cardRef={cardRef} employeeName={employeeData.name} />
+            <ExportPanel cardRef={cardRef} employeeId={employeeData.empId} />
           </div>
 
           {/* Right Panel - Preview */}

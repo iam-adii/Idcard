@@ -15,7 +15,7 @@ import { toast } from "sonner";
 
 interface ExportPanelProps {
   cardRef: React.RefObject<HTMLDivElement>;
-  employeeName: string;
+  employeeId: string;
 }
 
 type ExportFormat = "png" | "pdf";
@@ -27,14 +27,14 @@ const qualitySettings = {
   print: { scale: 4, label: "Print (4x - 300 DPI)", dpi: 300 },
 };
 
-const ExportPanel = ({ cardRef, employeeName }: ExportPanelProps) => {
+const ExportPanel = ({ cardRef, employeeId }: ExportPanelProps) => {
   const [format, setFormat] = useState<ExportFormat>("png");
   const [quality, setQuality] = useState<ExportQuality>("high");
   const [isExporting, setIsExporting] = useState(false);
 
   const getFileName = () => {
-    const name = employeeName.trim() || "employee";
-    const sanitized = name.replace(/[^a-zA-Z0-9]/g, "_").toLowerCase();
+    const id = employeeId.trim() || "employee";
+    const sanitized = id.replace(/[^a-zA-Z0-9]/g, "_").toLowerCase();
     return `id_card_${sanitized}`;
   };
 
