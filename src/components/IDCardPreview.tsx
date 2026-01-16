@@ -3,6 +3,8 @@ import idCardTemplate from "@/assets/id-card-template.jpeg";
 
 interface EmployeeData {
   empId: string;
+  name: string;
+  designation: string;
   dob: string;
   bloodGroup: string;
   emergencyContact: string;
@@ -46,6 +48,39 @@ const IDCardPreview = forwardRef<HTMLDivElement, IDCardPreviewProps>(
               crossOrigin="anonymous"
             />
           )}
+        </div>
+
+        {/* Name - Large, dark blue, positioned below photo */}
+        <div
+          className="absolute text-lg sm:text-xl font-bold uppercase"
+          style={{ 
+            color: "#1e3a8a", 
+            top: "337px", 
+            left: "200px", 
+            transform: "translateX(-50%)",
+            textAlign: "center",
+            width: "90%",
+            lineHeight: "1.2",
+            fontWeight: 800
+          }}
+        >
+          {data.name}
+        </div>
+
+        {/* Designation - Medium, red, positioned below name */}
+        <div
+          className="absolute text-base sm:text-lg font-bold uppercase"
+          style={{ 
+            color: "#dc2626", 
+            top: "368px", 
+            left: "198px", 
+            transform: "translateX(-50%)",
+            textAlign: "center",
+            width: "90%",
+            lineHeight: "1.2"
+          }}
+        >
+          {data.designation}
         </div>
 
         {/* Employee Details - using percentage-based positioning */}
