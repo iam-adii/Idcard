@@ -335,9 +335,16 @@ const InputPanel = ({ data, onChange }: InputPanelProps) => {
             </Label>
             <Input
               id="emergencyContact"
+              type="tel"
+              inputMode="numeric"
               placeholder="Phone number"
               value={data.emergencyContact}
-              onChange={(e) => handleChange("emergencyContact", e.target.value)}
+              onChange={(e) =>
+                handleChange(
+                  "emergencyContact",
+                  e.target.value.replace(/[^\d+\-\s()]/g, "").slice(0, 20)
+                )
+              }
               className="h-11 sm:h-10 text-base sm:text-sm"
             />
           </div>

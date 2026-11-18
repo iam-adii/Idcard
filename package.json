@@ -1,14 +1,54 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "ats-icard-builder",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "ATS iCard Builder — local Windows desktop app",
+  "author": "ATS",
+  "main": "electron/main.cjs",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron:dev": "concurrently -k \"vite\" \"wait-on http://127.0.0.1:8080 && electron .\"",
+    "electron:build": "vite build && electron-builder --win",
+    "electron:pack": "vite build && electron-builder --win --dir"
+  },
+  "build": {
+    "appId": "com.ats.icardbuilder",
+    "productName": "ATS iCard Builder",
+    "icon": "build/icon.ico",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    }
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -41,7 +81,6 @@
     "@radix-ui/react-toggle": "^1.1.9",
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.7",
-    "@supabase/supabase-js": "^2.90.1",
     "@tanstack/react-query": "^5.83.0",
     "@types/three": "^0.182.0",
     "class-variance-authority": "^0.7.1",
@@ -77,15 +116,20 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.1",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12",
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
     "lovable-tagger": "^1.1.13",
+    "png-to-ico": "^3.0.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
-    "vite": "^5.4.19"
+    "vite": "^5.4.19",
+    "wait-on": "^8.0.5"
   }
 }
